@@ -1,3 +1,5 @@
+"use strict";
+
 function SearchCtrl($scope)
 {
 	$scope.searchText = '';
@@ -6,8 +8,6 @@ function SearchCtrl($scope)
 	$scope.tabArray = [];
 
 	$scope.highlightIndex = 0;
-
-	$scope.tabsLength = 0;
 
 	$scope.updateIndex = 0;
 	
@@ -119,7 +119,6 @@ function SearchCtrl($scope)
 					else
 					{	
 						//console.log(response);
-
 						var tab = response.request.tab;
 						if (response.data.toLowerCase().indexOf($scope.searchTextLower) != -1)
 						{
