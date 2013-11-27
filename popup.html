@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app ng-csp>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+      .ng-cloak, .x-ng-cloak,
+      .ng-hide {
+        display: none !important;
+      }
+
+      ng\:form {
+        display: block;
+      }
+
+
+      body {
+        width: 600px;
+        font-family: monospace;
+        font-size: 8pt;
+        background-color: #272822;
+        color: #F8F8F2;
+        border-radius: 5px;
+      }
+
+      img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+      }
+
+      .highlight
+      {
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px;
+      }
+
+      .spinner
+      {
+        //float:right;
+      }
+
+      .type
+      {
+        color:rgb(180,180,180);
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+     <script src="angular.min.js"></script>
+     <script src="SearchCtrl.js"></script>
+
+  </head>
+  <body>
+    <div ng-controller='SearchCtrl'>
+      <input ng-model='searchText' ng-keydown='checkSwitchTab($event)' ng-change='onSearchUpdate()' type='text' placeholder='search tabs'></input>
+      <span ng-show='spinner'>...</span>
+      <div style='white-space:nowrap' ng-class='{highlight: (highlightIndex == $index)} ' ng-click='switchToTab(tab.tab.id)' ng-repeat="tab in tabArray">
+       </span> <span>{{tab.title}}</span>
+      </div>
+    </div>
+  </body>
+</html>
+
