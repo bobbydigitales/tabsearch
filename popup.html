@@ -48,6 +48,22 @@
       {
         color:rgb(180,180,180);
       }
+
+      .tabEntry
+      {
+        cursor:pointer;
+        height:12px;
+      }
+
+      .tabEntry:hover
+      {
+        padding:0px;
+        margin:0px;
+        border-style: solid;
+        border-width: 1px;
+        border-color:rgb(150, 150, 150);
+      }
+
     </style>
 
     <!--
@@ -62,10 +78,10 @@
   </head>
   <body>
     <div ng-controller='SearchCtrl'>
-      <input ng-model='searchText' ng-keydown='checkSwitchTab($event)' ng-change='onSearchUpdate()' type='text' placeholder='search tabs'></input>
+      <input ng-model='searchText' ng-keydown='checkSwitchTab($event)' ng-change='onSearchUpdate()' type='text' placeholder='search tabs' autofocus='autofocus'></input>
       <span ng-show='spinner'>...</span>
-      <div style='white-space:nowrap' ng-class='{highlight: (highlightIndex == $index)} ' ng-click='switchToTab(tab.tab.id)' ng-repeat="tab in tabArray">
-       </span> <span>{{tab.title}}</span>
+      <div class='tabEntry' style='white-space:nowrap' ng-class='{highlight: (highlightIndex == $index)} ' ng-click='switchToTabByIndex($index)' ng-repeat="tab in tabArray">
+        <span>{{tab.title}}</span>
       </div>
     </div>
   </body>
